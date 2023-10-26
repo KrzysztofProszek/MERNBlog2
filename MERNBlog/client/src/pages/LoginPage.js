@@ -9,7 +9,6 @@ export default function LoginPage() {
   const { setUserInfo } = useContext(UserContext)
   async function login(ev) {
     ev.preventDefault()
-
     const response = await fetch('http://localhost:4000/login', {
       method: 'POST',
       body: JSON.stringify({ username, password }),
@@ -25,10 +24,10 @@ export default function LoginPage() {
       alert('wrong credentials')
     }
   }
+
   if (redirect) {
     return <Navigate to={'/'} />
   }
-
   return (
     <form className="login" onSubmit={login}>
       <h1>Login</h1>
@@ -39,7 +38,7 @@ export default function LoginPage() {
         onChange={ev => setUsername(ev.target.value)}
       />
       <input
-        type="text"
+        type="password"
         placeholder="password"
         value={password}
         onChange={ev => setPassword(ev.target.value)}
